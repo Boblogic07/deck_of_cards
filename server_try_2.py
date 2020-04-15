@@ -45,7 +45,7 @@ def threaded_client_listener(player, junk):
             if knDebug >= 0 : print ("Listener conn.recv failed with exception.")
             if knDebug >= 0 : print (socket.error)
 
-        if bAllOK:            
+        if bAllOK:
             if knDebug >= 3 : print ("Received data from player {:d} '{:s}'. Count={:d}".format(player, data, count))
             if not data:
                 if knDebug >= 3 : print ("At the IF")
@@ -100,7 +100,7 @@ def threaded_client_sender(player):
                 print ("Sender failed (exception) for player {:d}.".format(player))
                 break
 
-    conn.close()
+    gcConn.close()
 
     if knDebug >= 0 : print("Sender stopped for player {:d}, becuase the connection was closed.".format(player))
 
@@ -111,7 +111,7 @@ def main():
 
     bAllOK = True
 
-    server = "192.168.0.77"
+    server = "0.0.0.0"
     port = 5555
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -141,6 +141,7 @@ def main():
 
 #----------------------------------------------------------------------
 
-main()
+if __name__ == "__main__":
+    main()
 
 #----------------------------------------------------------------------
